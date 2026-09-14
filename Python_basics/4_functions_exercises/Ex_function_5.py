@@ -25,3 +25,4 @@ def main():
     print(f'Theres {number_upper} upper cases and {number_lower} lower cases')
 
 main()
+#

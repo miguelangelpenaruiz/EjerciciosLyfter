@@ -33,3 +33,4 @@ if failed_grades > 0:
 else:
     print("There are not failed grades")
 print(f"This is the total average {total_average}")
+#

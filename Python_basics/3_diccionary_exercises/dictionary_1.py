@@ -34,3 +34,4 @@ my_hotel = {
 #         {"room_number": 2, "floor": 2, "night_price": 1000.50}
 #     ]
 # }
+#

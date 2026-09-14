@@ -5,3 +5,4 @@ my_string = "Chocolate milk"
 
 for index in range(len(my_string), 0, -1):
     print(my_string[index - 1])
+#

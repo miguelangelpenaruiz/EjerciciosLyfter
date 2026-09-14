@@ -16,3 +16,4 @@ def my_second_function():
 
 my_second_function()
 print(my_global_variable)
+#
