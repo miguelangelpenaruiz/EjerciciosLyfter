@@ -14,3 +14,4 @@ for index in range(len(list_key_to_eliminate)):
     personal_information.pop(list_key_to_eliminate[index])
 
 print(personal_information)
+#

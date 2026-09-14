@@ -7,3 +7,4 @@ for index in range(len(my_list) -1,-1,-1):
         my_list.pop(index)
 
 print(my_list)
+#

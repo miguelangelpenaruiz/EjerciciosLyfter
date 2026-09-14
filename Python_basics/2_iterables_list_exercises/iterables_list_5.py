@@ -10,3 +10,4 @@ print(my_list)
 num_max = max(my_list)
 
 print(f"The highest number is: {num_max}")
+#
