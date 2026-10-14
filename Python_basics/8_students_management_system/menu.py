@@ -11,7 +11,7 @@ def menu(students):
         print('G) Erase a student from the system')
         print('H) Show failed students')
         print('X) Exit (Make sure you made a data backup)')
-        option = input('Choose an option: ')
+        option = input('Choose an option: ').strip().upper()
         match option:
             case "A":
                 print("Let's add a student into the system:\n")
@@ -36,4 +36,3 @@ def menu(students):
                 break
             case _:
                 print('Invalid answer! Please make sure you to write a valid option (A-H)')
-                False

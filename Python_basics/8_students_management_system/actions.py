@@ -1,15 +1,25 @@
 def add_student_info(students):
-    student_formulary = {}
+    student_questionary = {}
     #EDIT HERE THE FIELDS YOU WANT FOR THE STUDENTS
-    keys_for_formulary = ['Complete Name', 'Group', 'Spanish Note', 'English Note', 'Social Studies Note', 'Science Note']
+    keys_for_student_info = ['complete_name', 'section']
+    keys_for_grades = ['spanish_grade', 'english_grade', 'social_studies_grade', 'science_grade']
 
-    for i in range(len(keys_for_formulary)):
-        answer = input(f'{keys_for_formulary[i]}: ')
-        student_formulary[keys_for_formulary[i]] = answer
+    for field in range(len(keys_for_student_info)):
+        answer = input(f'{keys_for_student_info[field]}: ')
+        student_questionary[keys_for_student_info[field]] = answer
 
-    students.append(student_formulary)
+    for field in range(len(keys_for_grades)):
+        answer = float(input((f'{keys_for_grades[field]}: ')))
+        student_questionary[keys_for_grades[field]] = answer
+    
 
-    print(f' You registered: {student_formulary} \n\n')
+    students.append(student_questionary)
+
+    print(f' You registered: {student_questionary} \n\n')
 
 def print_all_students(students):
-    print(students)
+    print(f'Student Records:')
+    for record in students:
+        for key,value in record.items():
+            print(f'{key}: {value}')
+        print('\n')
