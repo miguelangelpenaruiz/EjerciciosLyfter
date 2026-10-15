@@ -12,7 +12,7 @@ def add_student_info(students):
         while True:
             try:
                 answer = float(input(f'{format_label(field)}: '))
-                if answer > 0 and answer < 100:
+                if 0 <= answer <= 100:
                     student_questionary[field] = answer
                     break
                 else:
