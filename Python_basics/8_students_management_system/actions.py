@@ -9,12 +9,18 @@ def add_student_info(students):
         student_questionary[field] = answer
 
     for field in keys_for_grades:
-        answer = float(input(f'{format_label(field)}: '))
-        student_questionary[field] = answer
-    
+        while True:
+            try:
+                answer = float(input(f'{format_label(field)}: '))
+                if answer > 0 and answer < 100:
+                    student_questionary[field] = answer
+                    break
+                else:
+                    print("Invalid grade, a valid grade is between 0 and 100")
+            except ValueError as ex:
+                print('You must write a float number for a grade')
 
     students.append(student_questionary)
-
     print(f' You registered: {student_questionary} \n\n')
 
 def print_all_students(students):
