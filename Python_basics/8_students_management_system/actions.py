@@ -35,3 +35,18 @@ def print_all_students(students):
 
 def format_label(key):
     return key.replace("_", " ").title()
+
+def top_3_students(students):
+    print('')
+
+    for record in students:
+        student_id = []
+        for key,value in record.items():
+            counter = 0
+            sum_grades = 0
+            if isinstance(value,float):
+                counter += 1
+                sum_grades += sum_grades
+            average = sum_grades/counter
+
+

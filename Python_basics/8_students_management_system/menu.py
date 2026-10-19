@@ -21,7 +21,8 @@ def menu(students):
                 actions.print_all_students(students)
                 print('\n\n')
             case "C":
-                print('')
+                print('\n')
+                actions.top_3_students(students)
             case "D":
                 print('')
             case "E":
