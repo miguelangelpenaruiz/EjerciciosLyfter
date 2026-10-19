@@ -25,7 +25,7 @@ def menu(students):
                 actions.top_3_students(students)
                 print('\n')
             case "D":
-                actions.average_each_student(students)
+                actions.average_each_student(students,True)
                 print('\n')
             case "E":
                 print('')
@@ -38,4 +38,4 @@ def menu(students):
             case "X":
                 break
             case _:
-                print('Invalid answer! Please make sure you to write a valid option (A-H)')
+                print('Invalid answer! Please make sure you to write a valid option (A-H or X for exit)')

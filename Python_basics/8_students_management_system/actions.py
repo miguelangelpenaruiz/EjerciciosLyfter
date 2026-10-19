@@ -27,7 +27,6 @@ def add_student_info(students):
                 print('You must write a float number for a grade')
 
     students.append(student_questionary)
-    print(f' You registered: {student_questionary} \n\n')
 
 def print_all_students(students):
     if students == []:
@@ -45,9 +44,7 @@ def print_student(student):
 def format_label(key):
     return key.replace("_", " ").title()
 
-def average_each_student(students):
-    print('')
-
+def average_each_student(students,switch):
     if not students:
         print('List Empty')
     else:
@@ -60,10 +57,8 @@ def average_each_student(students):
             print(f'Average: {average}') 
             counter +=1
             sum_averages = average + sum_averages
-        print(f'\n General Average: {sum_averages/counter}')
-
-
-
+        if switch == True:
+            print(f'\n General Average: {sum_averages/counter}')
 
 def average_grade(student):
     counter = 0
@@ -74,4 +69,23 @@ def average_grade(student):
             sum_grades = value + sum_grades
     average = sum_grades/counter
     return average
+
+def top_3_students(students):
+    print('Top 3 Best Student \n')
+    top_first = sorted(students, key=average_grade, reverse=True)
+    if len(top_first) > 3:
+        counter = 0
+        for record in top_first:
+            if average_grade(record) >= average_grade(top_first[3]):
+                counter =+1
+                if counter >= 4:
+                    print('\n Tie Students: ')
+                
+                print('\n')
+                print_student(record)
+                print(f'Average: {average_grade(record)}')
+
+    else:
+        print(average_each_student(top_first, False))
+
 
