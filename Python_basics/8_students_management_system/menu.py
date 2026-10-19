@@ -16,15 +16,17 @@ def menu(students):
             case "A":
                 print("Let's add a student into the system:\n")
                 actions.add_student_info(students)
-            case "B":
                 print('\n')
+            case "B":
                 actions.print_all_students(students)
                 print('\n\n')
             case "C":
                 print('\n')
                 actions.top_3_students(students)
+                print('\n')
             case "D":
-                print('')
+                actions.average_each_student(students)
+                print('\n')
             case "E":
                 print('')
             case "F":

@@ -1,8 +1,14 @@
-def add_student_info(students):
-    student_questionary = {}
+def student_data_fields():
     #EDIT HERE THE FIELDS YOU WANT FOR THE STUDENTS
     keys_for_student_info = ['complete_name', 'section']
-    keys_for_grades = ['spanish_grade', 'english_grade', 'social_studies_grade', 'science_grade']
+    keys_for_grades = ['spanish_grade', 'english_grade', 'social_studies_grade', 'science_grade']    
+    
+    return keys_for_student_info, keys_for_grades
+
+def add_student_info(students):
+    student_questionary = {}
+
+    keys_for_student_info, keys_for_grades = student_data_fields() 
 
     for field in keys_for_student_info:
         answer = input(f'{format_label(field)}: ')
@@ -36,17 +42,25 @@ def print_all_students(students):
 def format_label(key):
     return key.replace("_", " ").title()
 
-def top_3_students(students):
+def average_each_student(students):
     print('')
 
     for record in students:
-        student_id = []
+        average = average_grade(record)
+        print('\n') 
         for key,value in record.items():
-            counter = 0
-            sum_grades = 0
-            if isinstance(value,float):
-                counter += 1
-                sum_grades += sum_grades
-            average = sum_grades/counter
+            print(f'{format_label(key)}: {value}')
+            
+        print(f'Average: {average}') 
 
+
+def average_grade(student):
+    counter = 0
+    sum_grades = 0
+    for key,value in student.items():
+        if isinstance(value,float):
+            counter += 1
+            sum_grades = value + sum_grades
+    average = sum_grades/counter
+    return average
 
