@@ -35,9 +35,12 @@ def print_all_students(students):
     else:
         print(f'Student Records:')
         for record in students:
-            for key,value in record.items():
-                print(f'{format_label(key)}: {value}')
+            print_student(record)
             print('\n')
+
+def print_student(student):
+    for key,value in student.items():
+        print(f'{format_label(key)}: {value}')
 
 def format_label(key):
     return key.replace("_", " ").title()
@@ -45,13 +48,21 @@ def format_label(key):
 def average_each_student(students):
     print('')
 
-    for record in students:
-        average = average_grade(record)
-        print('\n') 
-        for key,value in record.items():
-            print(f'{format_label(key)}: {value}')
-            
-        print(f'Average: {average}') 
+    if not students:
+        print('List Empty')
+    else:
+        counter = 0
+        sum_averages = 0
+        for record in students:
+            average = average_grade(record)
+            print('\n') 
+            print_student(record)
+            print(f'Average: {average}') 
+            counter +=1
+            sum_averages = average + sum_averages
+        print(f'\n General Average: {sum_averages/counter}')
+
+
 
 
 def average_grade(student):
