@@ -76,8 +76,8 @@ def top_3_students(students):
     if len(top_first) > 3:
         counter = 0
         for record in top_first:
-            if average_grade(record) >= average_grade(top_first[3]):
-                counter =+1
+            if average_grade(record) >= average_grade(top_first[2]):
+                counter +=1
                 if counter >= 4:
                     print('\n Tie Students: ')
                 
@@ -86,6 +86,6 @@ def top_3_students(students):
                 print(f'Average: {average_grade(record)}')
 
     else:
-        print(average_each_student(top_first, False))
+        average_each_student(top_first, False)
 
 
