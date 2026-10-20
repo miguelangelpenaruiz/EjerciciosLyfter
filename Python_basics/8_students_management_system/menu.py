@@ -47,11 +47,16 @@ def menu(students):
                     answer = input(f'Is ready the file "backup.csv" with the data? (Y/N)').strip().upper()
                     if answer == "Y":
                         data.import_data(students)
+                        print('Data restored')
+                        break
+                    else:
+                        print('Fill the file and try again')
                         break
             case "G":
                 print('')
             case "H":
                 print('')
+                actions.failed_students(students)
             case "X":
                 break
             case _:

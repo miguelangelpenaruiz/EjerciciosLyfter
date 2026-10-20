@@ -89,6 +89,20 @@ def top_3_students(students):
     else:
         average_each_student(top_first, False)
 
+def failed_students(students):
+    print('')
+    print('Failed Students: \n')
+    counter = 0
+    for record in students:
+        for key,value in record.items():
+            if isinstance (value,float):
+                if value < 70:
+                    counter += 1
+                    print('\n')
+                    print_student(record)
+                    print(f'Average: {average_grade(record)}')
+    if counter == 0:
+        print('Not failed students')
 
 
     
