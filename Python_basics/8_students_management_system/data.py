@@ -30,7 +30,7 @@ def template():
 def import_data(students):
     key_for_student_info, key_for_grades = actions.student_data_fields()
     try: 
-        with open('import_data.csv', 'r', newline= '', encoding='utf-8') as file:
+        with open('Python_basics/8_students_management_system/backup.csv', 'r', newline= '', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 for key in key_for_grades:

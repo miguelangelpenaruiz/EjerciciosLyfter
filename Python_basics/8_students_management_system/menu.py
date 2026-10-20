@@ -32,12 +32,19 @@ def menu(students):
                 print('')
                 data.system_backup(students)
             case "F":
-                data.template()
+                
                 print('\n Steps for import data:')
-                print("A file named: 'import_data.csv' was created, look for it!")
-                print('Checking the template, fill the data')
                 while True:
-                    answer = input(f'Is ready the file with the data? (Y/N)').strip().upper()
+                    answer_tem = input('Do you need a template for the csv file? (Y/N)').strip().upper()
+                    if answer_tem == "Y":
+                        data.template()
+                        print("A file named: 'import_data.csv' was created, look for it!")
+                        print('Checking the template, fill the data and name the file "backup.csv"')
+                        break
+                    else:
+                        break
+                while True:
+                    answer = input(f'Is ready the file "backup.csv" with the data? (Y/N)').strip().upper()
                     if answer == "Y":
                         data.import_data(students)
                         break
