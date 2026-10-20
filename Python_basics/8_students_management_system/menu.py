@@ -29,6 +29,7 @@ def menu(students):
                 print('\n')
             case "E":
                 print('')
+                actions.system_backup(students)
             case "F":
                 print('')
             case "G":

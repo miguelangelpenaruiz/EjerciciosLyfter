@@ -1,3 +1,5 @@
+import csv
+
 def student_data_fields():
     #EDIT HERE THE FIELDS YOU WANT FOR THE STUDENTS
     keys_for_student_info = ['complete_name', 'section']
@@ -78,7 +80,7 @@ def top_3_students(students):
         for record in top_first:
             if average_grade(record) >= average_grade(top_first[2]):
                 counter +=1
-                if counter >= 4:
+                if counter == 4:
                     print('\n Tie Students: ')
                 
                 print('\n')
@@ -89,3 +91,20 @@ def top_3_students(students):
         average_each_student(top_first, False)
 
 
+def system_backup(students):
+    key_for_student_info, key_for_grades = student_data_fields()
+    fields = []
+    fields.extend(key_for_student_info)
+    fields.extend(key_for_grades)
+    if not students:
+        print('List Empty')
+    else:
+        try:
+            with open('Python_basics/8_students_management_system/backup.csv', 'w', newline='', encoding='utf-8') as file:
+                writer = csv.DictWriter(file, fields)
+                writer.writeheader()
+                writer.writerows(students)
+            print('Data exported to backup.csv')
+        except FileNotFoundError as ex:
+            print(f'File not found {ex}')
+    
