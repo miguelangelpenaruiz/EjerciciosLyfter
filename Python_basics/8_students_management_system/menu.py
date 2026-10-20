@@ -1,4 +1,5 @@
 import actions
+import data
 
 def menu(students):
     while True:
@@ -29,7 +30,7 @@ def menu(students):
                 print('\n')
             case "E":
                 print('')
-                actions.system_backup(students)
+                data.system_backup(students)
             case "F":
                 print('')
             case "G":
