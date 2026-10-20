@@ -46,8 +46,9 @@ def menu(students):
                 while True:
                     answer = input(f'Is ready the file "backup.csv" with the data? (Y/N)').strip().upper()
                     if answer == "Y":
-                        data.import_data(students)
-                        print('Data restored')
+                        check_function = data.import_data(students)
+                        if check_function == True:
+                            print('Data restored')
                         break
                     else:
                         print('Fill the file and try again')

@@ -96,7 +96,7 @@ def failed_students(students):
     for record in students:
         for key,value in record.items():
             if isinstance (value,float):
-                if value < 70:
+                if value < 60:
                     counter += 1
                     print('\n')
                     print_student(record)

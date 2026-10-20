@@ -38,3 +38,4 @@ def import_data(students):
                 students.append(row)
     except FileNotFoundError as ex:
         print(f'File not found {ex}')
+        return ex
