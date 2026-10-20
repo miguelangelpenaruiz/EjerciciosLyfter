@@ -36,6 +36,7 @@ def import_data(students):
                 for key in key_for_grades:
                     row[key] = float(row[key])
                 students.append(row)
+        return True
     except FileNotFoundError as ex:
         print(f'File not found {ex}')
-        return ex
+        return False

@@ -3,18 +3,14 @@ def student_data_fields():
     #EDIT HERE THE FIELDS YOU WANT FOR THE STUDENTS
     keys_for_student_info = ['complete_name', 'section']
     keys_for_grades = ['spanish_grade', 'english_grade', 'social_studies_grade', 'science_grade']    
-    
     return keys_for_student_info, keys_for_grades
 
 def add_student_info(students):
     student_questionary = {}
-
     keys_for_student_info, keys_for_grades = student_data_fields() 
-
     for field in keys_for_student_info:
         answer = input(f'{format_label(field)}: ')
         student_questionary[field] = answer
-
     for field in keys_for_grades:
         while True:
             try:
@@ -26,7 +22,6 @@ def add_student_info(students):
                     print("Invalid grade, a valid grade is between 0 and 100")
             except ValueError as ex:
                 print('You must write a float number for a grade')
-
     students.append(student_questionary)
 
 def print_all_students(students):
@@ -85,7 +80,6 @@ def top_3_students(students):
                 print('\n')
                 print_student(record)
                 print(f'Average: {average_grade(record)}')
-
     else:
         average_each_student(top_first, False)
 
@@ -94,15 +88,15 @@ def failed_students(students):
     print('Failed Students: \n')
     counter = 0
     for record in students:
+        failed_subjects = {}
         for key,value in record.items():
             if isinstance (value,float):
                 if value < 60:
-                    counter += 1
-                    print('\n')
-                    print_student(record)
-                    print(f'Average: {average_grade(record)}')
+                    failed_subjects[key] = value
+        if failed_subjects:
+            counter += 1
+            print(f"\n{record['complete_name']} ({record['section']})")
+            for subject, grade in failed_subjects.items():
+                print(f'  {format_label(subject)}: {grade}')
     if counter == 0:
         print('Not failed students')
-
-
-    

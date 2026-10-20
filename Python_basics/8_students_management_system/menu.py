@@ -56,8 +56,8 @@ def menu(students):
             case "G":
                 print('')
             case "H":
-                print('')
                 actions.failed_students(students)
+                print('\n')
             case "X":
                 break
             case _:
