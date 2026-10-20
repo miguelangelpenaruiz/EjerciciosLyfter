@@ -54,6 +54,7 @@ def menu(students):
                         print('Fill the file and try again')
                         break
             case "G":
+                actions.erase_student(students)
                 print('')
             case "H":
                 actions.failed_students(students)

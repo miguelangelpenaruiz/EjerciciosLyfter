@@ -83,6 +83,23 @@ def top_3_students(students):
     else:
         average_each_student(top_first, False)
 
+def erase_student(students):
+    keys_for_student_info, keys_for_grades = student_data_fields()
+    answer_name = input(f'Which student you want to erase? Write {format_label(keys_for_student_info[0])} ')
+    answer_section = input(f'In which section belong? Write {format_label(keys_for_student_info[1])} ')
+    student = {}
+    for record in students:
+        if record['complete_name'] == answer_name and record['section'] == answer_section:
+            student = record
+            break
+    if student:
+        print('Delete confirmation')
+        answer_validation = input(f'Do you confirm you want to delete: {print_student(student)} (Y/N)').upper()
+        if answer_validation == "Y":
+            students.remove(student)
+    else:
+        print("That name and section doesn't exist, try again")
+
 def failed_students(students):
     print('')
     print('Failed Students: \n')
@@ -99,4 +116,4 @@ def failed_students(students):
             for subject, grade in failed_subjects.items():
                 print(f'  {format_label(subject)}: {grade}')
     if counter == 0:
-        print('Not failed students')
+        print('No failed students')
