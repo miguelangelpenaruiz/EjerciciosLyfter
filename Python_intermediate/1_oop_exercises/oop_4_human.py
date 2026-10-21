@@ -27,7 +27,7 @@ class Foot():
 
 class Leg():
     def __init__(self, foot):
-        self.feet = foot
+        self.foot = foot
 
 
 class Human():
