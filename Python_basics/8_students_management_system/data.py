@@ -1,5 +1,9 @@
 import csv
 import actions
+import os
+
+BASE_DIR = os.path.dirname(__file__)
+BACKUP_FILE = os.path.join(BASE_DIR, 'backup.csv')
 
 def system_backup(students):
     key_for_student_info, key_for_grades = actions.student_data_fields()
@@ -10,7 +14,7 @@ def system_backup(students):
         print('List Empty')
     else:
         try:
-            with open('Python_basics/8_students_management_system/backup.csv', 'w', newline='', encoding='utf-8') as file:
+            with open(BACKUP_FILE, 'w', newline='', encoding='utf-8') as file:
                 writer = csv.DictWriter(file, fields)
                 writer.writeheader()
                 writer.writerows(students)
@@ -18,19 +22,10 @@ def system_backup(students):
         except FileNotFoundError as ex:
             print(f'File not found {ex}')
 
-def template():
-    key_for_student_info, key_for_grades = actions.student_data_fields()
-    fields = []
-    fields.extend(key_for_student_info)
-    fields.extend(key_for_grades)
-    with open('import_data.csv', 'w', newline='', encoding='utf-8') as file:
-        writer = csv.DictWriter(file, fields)
-        writer.writeheader()
-
 def import_data(students):
     key_for_student_info, key_for_grades = actions.student_data_fields()
     try: 
-        with open('Python_basics/8_students_management_system/backup.csv', 'r', newline= '', encoding='utf-8') as file:
+        with open(BACKUP_FILE, 'r', newline= '', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 for key in key_for_grades:

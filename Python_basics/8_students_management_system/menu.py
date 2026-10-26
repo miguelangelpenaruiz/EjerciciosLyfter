@@ -35,16 +35,7 @@ def menu(students):
                 
                 print('\n Steps for import data:')
                 while True:
-                    answer_tem = input('Do you need a template for the csv file? (Y/N)').strip().upper()
-                    if answer_tem == "Y":
-                        data.template()
-                        print("A file named: 'import_data.csv' was created, look for it!")
-                        print('Checking the template, fill the data and name the file "backup.csv"')
-                        break
-                    else:
-                        break
-                while True:
-                    answer = input(f'Is ready the file "backup.csv" with the data? (Y/N)').strip().upper()
+                    answer = input(f'Is ready the file "backup.csv" inside the project folder with the data? (Y/N)').strip().upper()
                     if answer == "Y":
                         check_function = data.import_data(students)
                         if check_function == True:
