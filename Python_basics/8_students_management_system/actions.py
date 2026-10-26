@@ -95,6 +95,9 @@ def erase_student(students):
         answer_validation = input(f'Do you confirm you want to delete: (Y/N)').upper()
         if answer_validation == "Y":
             students.remove(student)
+            print('Student deleted')
+        else:
+            print('Deletion cancelled')
     else:
         print("That name and section doesn't exist, try again")
 
