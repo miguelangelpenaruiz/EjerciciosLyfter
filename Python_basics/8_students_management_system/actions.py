@@ -16,7 +16,7 @@ def add_student_info(students):
     value_section = student_questionary[keys_for_student_info[1]]
 
     if student_exists(value_complete_name, value_section, students):
-        print('This student already exits')
+        print('This student already exists')
     else:
         for field in keys_for_grades:
             while True:
