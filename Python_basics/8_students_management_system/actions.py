@@ -28,7 +28,7 @@ def print_all_students(students):
     if students == []:
         print('Empty List')
     else:
-        print(f'Student Records:')
+        print(f'\n Student Records: \n')
         for record in students:
             print_student(record)
             print('\n')
@@ -88,10 +88,7 @@ def erase_student(students):
     answer_name = input(f'Which student you want to erase? Write {format_label(keys_for_student_info[0])} ')
     answer_section = input(f'In which section belong? Write {format_label(keys_for_student_info[1])} ')
     student = {}
-    for record in students:
-        if record['complete_name'] == answer_name and record['section'] == answer_section:
-            student = record
-            break
+    student = student_exists(answer_name,answer_section,students)
     if student:
         print('Delete confirmation')
         answer_validation = input(f'Do you confirm you want to delete: {print_student(student)} (Y/N)').upper()
@@ -117,3 +114,14 @@ def failed_students(students):
                 print(f'  {format_label(subject)}: {grade}')
     if counter == 0:
         print('No failed students')
+
+def delete_students_list(students):
+    students.clear()
+
+def student_exists(name, section, students):
+    keys_for_student_info, keys_for_grades = student_data_fields()
+    for record in students:
+        if record[keys_for_student_info[0]] == name and record[keys_for_student_info[1]] == section:
+            return record
+    return False
+    
