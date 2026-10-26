@@ -27,13 +27,15 @@ def import_data(students):
     try: 
         with open(BACKUP_FILE, 'r', newline= '', encoding='utf-8') as file:
             reader = csv.DictReader(file)
+            counter = 0
             for row in reader:
                 for key in key_for_grades:
                     row[key] = float(row[key])
+                counter += 1
                 students.append(row)
-        return True
-    except FileNotFoundError as ex:
-        print(f'File not found {ex}')
+        return True, counter
+    except FileNotFoundError:
+        print(f'No backup found. Export your data first (option E).')
         return False
 
 

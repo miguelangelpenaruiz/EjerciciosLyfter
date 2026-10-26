@@ -32,18 +32,9 @@ def menu(students):
                 print('')
                 data.system_backup(students)
             case "F":
-                
-                print('\n Steps for import data:')
-                while True:
-                    answer = input(f'Is ready the file "backup.csv" inside the project folder with the data? (Y/N)').strip().upper()
-                    if answer == "Y":
-                        check_function = data.import_data(students)
-                        if check_function == True:
-                            print('Data restored')
-                        break
-                    else:
-                        print('Fill the file and try again')
-                        break
+                check_function, counter = data.import_data(students)
+                if check_function == True:
+                    print(f'{counter} students restored')
             case "G":
                 actions.erase_student(students)
                 print('')
