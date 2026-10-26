@@ -91,7 +91,8 @@ def erase_student(students):
     student = student_exists(answer_name,answer_section,students)
     if student:
         print('Delete confirmation')
-        answer_validation = input(f'Do you confirm you want to delete: {print_student(student)} (Y/N)').upper()
+        print_student(student)
+        answer_validation = input(f'Do you confirm you want to delete: (Y/N)').upper()
         if answer_validation == "Y":
             students.remove(student)
     else:
@@ -114,9 +115,6 @@ def failed_students(students):
                 print(f'  {format_label(subject)}: {grade}')
     if counter == 0:
         print('No failed students')
-
-def delete_students_list(students):
-    students.clear()
 
 def student_exists(name, section, students):
     keys_for_student_info, keys_for_grades = student_data_fields()

@@ -25,11 +25,10 @@ def system_backup(students):
 def import_data(students):
     key_for_student_info, key_for_grades = actions.student_data_fields()
     try:
-        if students:
-            actions.delete_students_list(students)
         with open(BACKUP_FILE, 'r', newline= '', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             counter = 0
+            students.clear()
             for row in reader:
                 value_complete_name = row[key_for_student_info[0]]
                 value_section = row[key_for_student_info[1]]
