@@ -23,25 +23,25 @@ def system_backup(students):
             print(f'File not found {ex}')
 
 def import_data(students):
-    key_for_student_info, key_for_grades = actions.student_data_fields()
+    keys_for_student_info, keys_for_grades = actions.student_data_fields()
     try:
         with open(BACKUP_FILE, 'r', newline= '', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             counter = 0
             students.clear()
             for row in reader:
-                value_complete_name = row[key_for_student_info[0]]
-                value_section = row[key_for_student_info[1]]
+                value_complete_name = row[keys_for_student_info[0]]
+                value_section = row[keys_for_student_info[1]]
                 if actions.student_exists(value_complete_name, value_section, students):
                     continue
                 else:
-                    for key in key_for_grades:
+                    for key in keys_for_grades:
                         row[key] = float(row[key])
                     counter += 1
                     students.append(row)
-            print(f'{counter} students restored')
+            print(f'\n {counter} students restored \n')
     except FileNotFoundError:
-        print(f'No backup found. Export your data first (option E).')
+        print(f'\n No backup found. Export your data first (option E).')
 
 
 

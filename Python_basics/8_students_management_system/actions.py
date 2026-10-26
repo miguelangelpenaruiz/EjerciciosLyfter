@@ -11,18 +11,25 @@ def add_student_info(students):
     for field in keys_for_student_info:
         answer = input(f'{format_label(field)}: ')
         student_questionary[field] = answer
-    for field in keys_for_grades:
-        while True:
-            try:
-                answer = float(input(f'{format_label(field)}: '))
-                if 0 <= answer <= 100:
-                    student_questionary[field] = answer
-                    break
-                else:
-                    print("Invalid grade, a valid grade is between 0 and 100")
-            except ValueError as ex:
-                print('You must write a float number for a grade')
-    students.append(student_questionary)
+    
+    value_complete_name = student_questionary[keys_for_student_info[0]]
+    value_section = student_questionary[keys_for_student_info[1]]
+
+    if student_exists(value_complete_name, value_section, students):
+        print('This student already exits')
+    else:
+        for field in keys_for_grades:
+            while True:
+                try:
+                    answer = float(input(f'{format_label(field)}: '))
+                    if 0 <= answer <= 100:
+                        student_questionary[field] = answer
+                        break
+                    else:
+                        print("Invalid grade, a valid grade is between 0 and 100")
+                except ValueError as ex:
+                    print('You must write a float number for a grade')
+        students.append(student_questionary)
 
 def print_all_students(students):
     if students == []:
