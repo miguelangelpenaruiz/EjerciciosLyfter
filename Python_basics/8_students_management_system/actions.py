@@ -87,8 +87,9 @@ def erase_student(students):
     keys_for_student_info, keys_for_grades = student_data_fields()
     answer_name = input(f'Which student you want to erase? Write {format_label(keys_for_student_info[0])} ')
     answer_section = input(f'In which section belong? Write {format_label(keys_for_student_info[1])} ')
-    student = {}
+
     student = student_exists(answer_name,answer_section,students)
+
     if student:
         print('Delete confirmation')
         print_student(student)
@@ -124,5 +125,5 @@ def student_exists(name, section, students):
     for record in students:
         if record[keys_for_student_info[0]] == name and record[keys_for_student_info[1]] == section:
             return record
-    return False
+    return None
     
