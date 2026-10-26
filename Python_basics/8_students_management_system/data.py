@@ -33,10 +33,9 @@ def import_data(students):
                     row[key] = float(row[key])
                 counter += 1
                 students.append(row)
-        return True, counter
+            print(f'{counter} students restored')
     except FileNotFoundError:
         print(f'No backup found. Export your data first (option E).')
-        return False
 
 
 

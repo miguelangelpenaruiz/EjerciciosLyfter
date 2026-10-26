@@ -32,9 +32,7 @@ def menu(students):
                 print('')
                 data.system_backup(students)
             case "F":
-                check_function, counter = data.import_data(students)
-                if check_function == True:
-                    print(f'{counter} students restored')
+                data.import_data(students)
             case "G":
                 actions.erase_student(students)
                 print('')
