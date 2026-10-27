@@ -1,36 +1,35 @@
-class Head():
+class Head:
+    def __init__(self):
+        pass
+
+class Hand:
     def __init__(self):
         pass
 
 
-class Hand():
-    def __init__(self):
-        pass
-
-
-class Arm():
+class Arm:
     def __init__(self, hand):
         self.hand = hand
 
 
-class Torso(): 
+class Torso: 
     def __init__(self, head, right_arm, left_arm):
         self.head = head
         self.right_arm = right_arm
         self.left_arm = left_arm
 
 
-class Foot():
+class Foot:
     def __init__(self):
         pass
 
 
-class Leg():
+class Leg:
     def __init__(self, foot):
         self.foot = foot
 
 
-class Human():
+class Human:
     def __init__(self, torso, right_leg, left_leg):
         self.torso = torso
         self.right_leg = right_leg

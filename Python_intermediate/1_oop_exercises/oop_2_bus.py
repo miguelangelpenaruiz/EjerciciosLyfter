@@ -1,4 +1,4 @@
-class Bus():
+class Bus:
     max_passengers = 12
 
     def __init__(self):
@@ -15,54 +15,38 @@ class Bus():
             self.passengers.remove(passenger)
         else:
             print("That passenger is not on the bus")
+    def print_passengers(self):
+        for passenger in self.passengers:
+            print(passenger.name)
 
-class Person():
+class Person:
     
     def __init__(self, name):
         self.name = name
-        
+
+school_bus = Bus()
+
 miguel = Person("miguel")
 luis = Person("luis")
 nat = Person("nat")
 
-a3_= Person("3")
-a4_ = Person("4")
-a5_ = Person("5")
-a6_ = Person("6")
-a7_ = Person("7")
-a8_ = Person("8")
-a9_ = Person("9")
-a10_ = Person("10")
-a11_ = Person("11")
-a12_ = Person("12")
-
-a13_ = Person("13")
-
-school_bus = Bus()
-
+# 3 con nombre + 10 numeradas = 13: el último no cabe
 school_bus.add_passenger(miguel)
 school_bus.add_passenger(luis)
+school_bus.add_passenger(nat)
 
-for passenger in school_bus.passengers:
-    print(passenger.name)
+for number in range(4, 14):
+    person = Person(str(number))
+    school_bus.add_passenger(person)
 
-school_bus.get_off_passenger(miguel)
+print("--- Passengers on board ---")
+school_bus.print_passengers()
 
-for passenger in school_bus.passengers:
-    print(passenger.name)
+school_bus.get_off_passenger(luis)
 
-school_bus.get_off_passenger(nat)
+school_bus.get_off_passenger(Person("ana"))
 
-school_bus.add_passenger(miguel)
-school_bus.add_passenger(a3_)
-school_bus.add_passenger(a4_)
-school_bus.add_passenger(a5_)
-school_bus.add_passenger(a6_)
-school_bus.add_passenger(a7_)
-school_bus.add_passenger(a8_)
-school_bus.add_passenger(a9_)
-school_bus.add_passenger(a10_)
-school_bus.add_passenger(a11_)
-school_bus.add_passenger(a12_)
+print("--- After getting off ---")
+school_bus.print_passengers()
 
-school_bus.add_passenger(a13_)
+
