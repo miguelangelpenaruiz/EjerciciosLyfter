@@ -4,7 +4,7 @@ class Bus:
     def __init__(self):
         self.passengers = []
 
-    def add_passenger(self,new_passenger):
+    def add_passenger(self, new_passenger):
         if len(self.passengers) >= self.max_passengers:
             print('The bus is full!!')
         else:
@@ -15,17 +15,21 @@ class Bus:
             self.passengers.remove(passenger)
         else:
             print("That passenger is not on the bus")
+
     def print_passengers(self):
         for passenger in self.passengers:
             print(passenger.name)
+
+
 
 class Person:
     
     def __init__(self, name):
         self.name = name
 
-school_bus = Bus()
 
+
+school_bus = Bus()
 miguel = Person("miguel")
 luis = Person("luis")
 nat = Person("nat")
