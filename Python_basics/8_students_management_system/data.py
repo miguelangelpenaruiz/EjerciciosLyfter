@@ -47,7 +47,7 @@ def import_data(students):
             if rows_skipped == 1:
                 print(f'{rows_skipped} row skipped due to invalid grades')
             elif rows_skipped > 1:
-                print(f'{rows_skipped} row skipped due to invalid grades')
+                print(f'{rows_skipped} rows skipped due to invalid grades')
     except FileNotFoundError:
         print(f'\n No backup found. Export your data first (option E).')
 
