@@ -28,6 +28,7 @@ def import_data(students):
         with open(BACKUP_FILE, 'r', newline= '', encoding='utf-8') as file:
             reader = csv.DictReader(file)
             counter = 0
+            rows_skipped = 0
             students.clear()
             for row in reader:
                 value_complete_name = row[keys_for_student_info[0]]
@@ -35,11 +36,15 @@ def import_data(students):
                 if actions.student_exists(value_complete_name, value_section, students):
                     continue
                 else:
-                    for key in keys_for_grades:
-                        row[key] = float(row[key])
-                    counter += 1
-                    students.append(row)
+                    try:
+                        for key in keys_for_grades:
+                            row[key] = float(row[key])
+                        counter += 1
+                        students.append(row)
+                    except ValueError:
+                        rows_skipped += 1
             print(f'\n {counter} students restored \n')
+            print(f'{rows_skipped} rows skipped due to invalid grades')
     except FileNotFoundError:
         print(f'\n No backup found. Export your data first (option E).')
 
