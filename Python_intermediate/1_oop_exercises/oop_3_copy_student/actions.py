@@ -64,10 +64,10 @@ def average_each_student(students,switch):
 def average_grade(student):
     counter = 0
     sum_grades = 0
-    for key,value in student.items():
-        if isinstance(value,float):
+    for field in student.fields_students:
+        if isinstance(getattr(student, field),float):
             counter += 1
-            sum_grades = value + sum_grades
+            sum_grades = getattr(student, field) + sum_grades
     average = sum_grades/counter
     return average
 
