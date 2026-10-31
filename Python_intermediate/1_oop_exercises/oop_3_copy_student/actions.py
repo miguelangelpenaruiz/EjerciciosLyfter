@@ -39,8 +39,8 @@ def print_all_students(students):
             print('\n')
 
 def print_student(student):
-    for key,value in student.items():
-        print(f'{format_label(key)}: {value}')
+    for field in student.fields_students:
+        print(f'{format_label(field)}: {getattr(student, field)}')
 
 def format_label(key):
     return key.replace("_", " ").title()
@@ -126,11 +126,11 @@ def failed_students(students):
         print('No failed students')
 
 def student_exists(name, section, students):
-    field_name = list(student_class.Student.fields_students)[0]
+    field_complete_name = list(student_class.Student.fields_students)[0]
     field_section = list(student_class.Student.fields_students)[1]
 
     for record in students:
-        if getattr(record, field_name) == name and getattr(record, field_section) == section:
+        if getattr(record, field_complete_name) == name and getattr(record, field_section) == section:
             return record
     return None
     
