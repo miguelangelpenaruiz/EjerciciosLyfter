@@ -126,8 +126,11 @@ def failed_students(students):
         print('No failed students')
 
 def student_exists(name, section, students):
+    field_name = list(student_class.Student.fields_students)[0]
+    field_section = list(student_class.Student.fields_students)[1]
+
     for record in students:
-        if record[list(student_class.Student.fields_students)[0]] == name and record[list(student_class.Student.fields_students)[1]] == section:
+        if getattr(record, field_name) == name and getattr(record, field_section) == section:
             return record
     return None
     
