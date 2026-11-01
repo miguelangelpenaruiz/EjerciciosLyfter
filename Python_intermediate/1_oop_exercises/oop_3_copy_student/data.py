@@ -17,7 +17,7 @@ def system_backup(students):
                 writer.writeheader()
 
                 students_as_dicts = []
-                
+
                 for student in students:
                     students_as_dicts.append(student.to_dict()) 
                 writer.writerows(students_as_dicts)
@@ -27,7 +27,6 @@ def system_backup(students):
             print(f'File not found {ex}')
 
 def import_data(students):
-    keys_for_student_info, keys_for_grades = actions.student_data_fields()
     try:
         with open(BACKUP_FILE, 'r', newline= '', encoding='utf-8') as file:
             reader = csv.DictReader(file)
@@ -35,17 +34,16 @@ def import_data(students):
             rows_skipped = 0
             students.clear()
             for row in reader:
-                value_complete_name = row[keys_for_student_info[0]]
-                value_section = row[keys_for_student_info[1]]
+                value_complete_name = row[list(student_class.Student.fields_students)[0]]
+                value_section = row[list(student_class.Student.fields_students)[1]]
                 if actions.student_exists(value_complete_name, value_section, students):
                     continue
                 else:
                     try:
-                        for key in keys_for_grades:
-                            row[key] = float(row[key])
+                        new_student = student_class.Student(row)
+                        students.append(new_student)
                         counter += 1
-                        students.append(row)
-                    except ValueError:
+                    except (ValueError, KeyError):
                         rows_skipped += 1
             print(f'\n {counter} students restored \n')
             if rows_skipped == 1:
