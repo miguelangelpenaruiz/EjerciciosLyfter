@@ -89,9 +89,8 @@ def top_3_students(students):
         average_each_student(top_first, False)
 
 def erase_student(students):
-    keys_for_student_info, keys_for_grades = student_data_fields()
-    answer_name = input(f'Which student you want to erase? Write {format_label(keys_for_student_info[0])} ')
-    answer_section = input(f'In which section belong? Write {format_label(keys_for_student_info[1])} ')
+    answer_name = input(f'Which student you want to erase? Write {format_label(list(student_class.Student.fields_students)[0])} ')
+    answer_section = input(f'In which section belong? Write {format_label(list(student_class.Student.fields_students)[1])} ')
 
     student = student_exists(answer_name,answer_section,students)
 
@@ -108,18 +107,20 @@ def erase_student(students):
         print("That name and section doesn't exist, try again")
 
 def failed_students(students):
+    field_complete_name = list(student_class.Student.fields_students)[0]
+    field_section = list(student_class.Student.fields_students)[1]
     print('')
     print('Failed Students: \n')
     counter = 0
     for record in students:
         failed_subjects = {}
-        for key,value in record.items():
-            if isinstance (value,float):
-                if value < 60:
-                    failed_subjects[key] = value
+        for field, field_type in student_class.Student.fields_students.items():
+            if field_type == float:
+                if getattr(record, field) < 60:
+                    failed_subjects[field] = getattr(record, field)
         if failed_subjects:
             counter += 1
-            print(f"\n{record['complete_name']} ({record['section']})")
+            print(f"\n{getattr(record, field_complete_name)} ({getattr(record, field_section)})")
             for subject, grade in failed_subjects.items():
                 print(f'  {format_label(subject)}: {grade}')
     if counter == 0:
