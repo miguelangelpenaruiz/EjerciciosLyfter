@@ -1,15 +1,13 @@
 import csv
 import actions
 import os
+import student_class
 
 BASE_DIR = os.path.dirname(__file__)
 BACKUP_FILE = os.path.join(BASE_DIR, 'backup.csv')
 
 def system_backup(students):
-    key_for_student_info, key_for_grades = actions.student_data_fields()
-    fields = []
-    fields.extend(key_for_student_info)
-    fields.extend(key_for_grades)
+    fields = list(student_class.Student.fields_students)
     if not students:
         print('List Empty')
     else:
@@ -17,7 +15,13 @@ def system_backup(students):
             with open(BACKUP_FILE, 'w', newline='', encoding='utf-8') as file:
                 writer = csv.DictWriter(file, fields)
                 writer.writeheader()
-                writer.writerows(students)
+
+                students_as_dicts = []
+                
+                for student in students:
+                    students_as_dicts.append(student.to_dict()) 
+                writer.writerows(students_as_dicts)
+
             print('Data exported to backup.csv')
         except FileNotFoundError as ex:
             print(f'File not found {ex}')

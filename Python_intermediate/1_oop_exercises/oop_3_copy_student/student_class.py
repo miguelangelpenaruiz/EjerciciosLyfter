@@ -9,3 +9,10 @@ class Student:
             raise KeyError(f"{field} field is missing")
         except ValueError:
             raise ValueError(f'{field} value_type must be {field_type.__name__}')
+
+
+    def to_dict(self):
+        data = {}
+        for field in self.fields_students:
+            data[field] = getattr(self, field)
+        return data
