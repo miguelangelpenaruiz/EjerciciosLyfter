@@ -2,12 +2,12 @@ import json
 
 def main():
     print('Welcome! Lets add a new Pokemon to the Pokemons file')
-    with open("7_JSON_Exercise/pokemons.json", mode='r', encoding='utf-8') as read_file:
+    with open("Python_basics/7_JSON_exercise/pokemons.json", mode='r', encoding='utf-8') as read_file:
         pokemons = json.load(read_file)
         print(pokemons[0].keys())
         new_register = ask_sub_values(pokemons[0])
         pokemons.append(new_register)
-    with open("7_JSON_Exercise/pokemons.json", mode='w', encoding='utf-8') as write_file:
+    with open("Python_basics/7_JSON_exercise/pokemons.json", mode='w', encoding='utf-8') as write_file:
         json.dump(pokemons, write_file, indent=2, ensure_ascii=False)
 
 def ask_sub_values(sub_dictionary):
