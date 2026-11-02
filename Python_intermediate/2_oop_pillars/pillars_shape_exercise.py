@@ -36,8 +36,8 @@ print(f"The perimeter of the wheel is {wheel.calculate_perimeter()}m")
 
 class Square(Shape):
     def __init__(self, side):
-        self.side = side
         super().__init__()
+        self.side = side
 
     def calculate_perimeter(self):
         perimeter = self.side * 4
@@ -52,17 +52,18 @@ print(f'The area of the notebook is {notebook.calculate_area()}cm2')
 print(f"The perimeter of the notebook is {notebook.calculate_perimeter()}cm")
 
 class Rectangle(Shape):
-    def __init__(self, base, high):
-        self.base = base
-        self.high = high
+    def __init__(self, base, height):
         super().__init__()
+        self.base = base
+        self.height = height
+
 
     def calculate_area(self):
-        area = self.base * self.high
+        area = self.base * self.height
         return area
 
     def calculate_perimeter(self):
-        perimeter = (self.base*2)+(self.high*2)
+        perimeter = (self.base*2)+(self.height*2)
         return perimeter
 
 book = Rectangle(7,22)
