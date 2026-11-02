@@ -8,18 +8,16 @@ class BankAccount:
     def deposit(self, amount):
         if amount < 0:
             raise ValueError("You can not deposit a negative number")
-        else:
-            self._balance = self._balance + amount
-            print(self._balance)
+        self._balance = self._balance + amount
+        print(self._balance)
 
     def withdraw(self, amount):
         if amount < 0:
             raise ValueError("Do not enter a negative number for the withdraw")
         elif (self._balance - amount) < 0:
             raise ValueError('Not enough funds for the withdraw')
-        else:
-            self._balance = self._balance - amount
-            print(f'Available funds: {self._balance}')
+        self._balance = self._balance - amount
+        print(f'Available funds: {self._balance}')
 
 # Tests
 account = BankAccount()
@@ -34,9 +32,9 @@ except AttributeError as error:
     print(f"Error: {error}")
 print(account.balance)  # 70
 
-class SavingAccount(BankAccount):
+class SavingsAccount(BankAccount):
     def __init__(self, min_balance):
-        super().__init__
+        super().__init__()
         self.min_balance = float(min_balance)
         if self.min_balance < 0:
             raise ValueError('The minimum balance must be a positive number')
@@ -48,7 +46,6 @@ class SavingAccount(BankAccount):
             raise ValueError('Not enough funds for the withdraw')
         elif self._balance - amount < self.min_balance:
             raise ValueError(f"You cannot do a withdraw because your minimum balance is {self.min_balance}")
-        else:
-            self._balance = self._balance - amount
-            print(f'Available funds: {self._balance}')
+        self._balance = self._balance - amount
+        print(f'Available funds: {self._balance}')
 
