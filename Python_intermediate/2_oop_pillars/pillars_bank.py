@@ -25,12 +25,18 @@ account.deposit(100)        # balance: 100
 account.withdraw(30)        # balance: 70
 try:
     account.withdraw(500)       # Error not enough funds
-    account.deposit(-50)        # Error
-    account.withdraw(-20) 
 except ValueError as error:
-    print(f"Error: {error}")     # Error
+    print(f"Error: {error}")
 try:
-    account.balance = 999
+    account.deposit(-50)        # Error
+except ValueError as error:
+    print(f"Error: {error}")
+try:
+    account.withdraw(-20)       # Error
+except ValueError as error:
+    print(f"Error: {error}")
+try:
+    account.balance = 999       # Error
 except AttributeError as error:
     print(f"Error: {error}")
 print(account.balance)  # 70
@@ -43,11 +49,7 @@ class SavingsAccount(BankAccount):
             raise ValueError('The minimum balance must be a positive number')
 
     def withdraw(self, amount):
-        if amount < 0:
-            raise ValueError("Do not enter a negative number for the withdraw")
-        elif (self._balance - amount) < 0:
-            raise ValueError('Not enough funds for the withdraw')
-        elif self._balance - amount < self.min_balance:
+        if self._balance - amount < self.min_balance:
             raise ValueError(f"You cannot do a withdraw because your minimum balance is {self.min_balance}")
         super().withdraw(amount)
 
@@ -56,6 +58,8 @@ basic_ppr = SavingsAccount(1000)
 basic_ppr.deposit(2000)
 
 try:
-    basic_ppr.withdraw(1500)
+    basic_ppr.withdraw(1500)        # Error
 except ValueError as error:
-    print(f"Error: {error}") 
+    print(f"Error: {error}")
+
+basic_ppr.withdraw(1000)
