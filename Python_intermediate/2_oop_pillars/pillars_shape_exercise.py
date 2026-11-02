@@ -2,8 +2,6 @@ from abc import ABC, abstractmethod
 import math
 
 class Shape(ABC):
-    def __init__(self):
-        super().__init__()
 
     @abstractmethod
     def calculate_perimeter(self):
@@ -14,26 +12,25 @@ class Shape(ABC):
         pass
 
 class Circle(Shape):
-    def __init__(self):
+    def __init__(self,radius):
         super().__init__()
+        self.radius = radius
 
-    def calculate_perimeter(self, radius):
-        perimeter = (radius*2)*math.pi
+    def calculate_perimeter(self):
+        perimeter = (self.radius*2)*math.pi
         print(f"The perimeter is {perimeter}m")
-        return super().calculate_perimeter()
 
-    def calculate_area(self, radius):
-        area = (math.pi*radius) ** 2
+    def calculate_area(self):
+        area = math.pi * (self.radius ** 2)
         print(f'The area is {area}m2')
-        return super().calculate_area()
 
 try:
     wheel = Shape()
-except Exception:
-    print(f'{Exception}')
+except TypeError as error:
+    print(f'{error}')
 
-wheel = Circle()
-wheel.calculate_area(3)
-wheel.calculate_perimeter(3)
+wheel = Circle(3)
+wheel.calculate_area()
+wheel.calculate_perimeter()
 
 
