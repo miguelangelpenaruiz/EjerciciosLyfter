@@ -12,7 +12,7 @@ class Shape(ABC):
         pass
 
 class Circle(Shape):
-    def __init__(self,radius):
+    def __init__(self, radius):
         super().__init__()
         self.radius = radius
 
@@ -56,7 +56,6 @@ class Rectangle(Shape):
         super().__init__()
         self.base = base
         self.height = height
-
 
     def calculate_area(self):
         area = self.base * self.height
