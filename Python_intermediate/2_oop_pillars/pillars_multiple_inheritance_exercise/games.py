@@ -28,7 +28,7 @@ class GameBase(ABC):
         return self.user_tries == 0
 
     @abstractmethod
-    def show_word():
+    def show_word(self):
         pass
 
 
@@ -38,7 +38,7 @@ class BackwardsMixin():
         return word[::-1]
 
 class HideLettersMixin():
-    def hide_letter(self,word):
+    def hide_letter(self, word):
         letters = list(word)
         letters[1] = "-"
         letters[3] = "-"

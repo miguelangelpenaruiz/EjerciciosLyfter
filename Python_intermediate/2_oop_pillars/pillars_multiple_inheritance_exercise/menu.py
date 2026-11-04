@@ -1,17 +1,15 @@
 import games
 
-EASY_WORDS = [casa,pelo,mano,rojo]
-MEDIUM_WORDS = [lapiz,reloj,canal,comer,jamon]
-HARD_WORDS = [correr,lanzar,pelota,tomate,cabeza]
+EASY_WORDS = ["casa","pelo","mano","rojo"]
+MEDIUM_WORDS = ["lapiz","reloj","canal","comer","jamon"]
+HARD_WORDS = ["correr","lanzar","pelota","tomate","cabeza"]
 
 def play(game):
-    while game.user_tries():
-        game.show_word()
-        print(f'You have {game.user_tries()} tries left')
-        try:
-            answer = input(game.user_participation())
-        except ValueError:
-            print('You lost!!')
+    while game.game_over_method():
+        print(game.show_word())
+        print(f'You have {game.user_tries} tries left')
+        answer = input('Guess the word: ').strip().upper()
+        game.user_participation(answer)
         if answer:
             print('Congratulations!! You Won')
 
@@ -33,4 +31,4 @@ def menu():
             case "X":
                 break
             case _:
-                True
+                print('Invalid answer! Please make sure you to write a valid option (A-C or X for exit)')
