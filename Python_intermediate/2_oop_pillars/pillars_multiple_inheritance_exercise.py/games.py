@@ -19,7 +19,7 @@ class GameBase():
     def user_participation(self, user_participation_word):
         return user_participation_word == self.selected_word
 
-    def game_over(self):
+    def game_over_method(self):
         if self.user_tries == 0:
             self.game_over = 1
             return self.game_over
@@ -32,7 +32,8 @@ class BackwardsMixin():
 class HideLettersMixin():
     def hide_letters(self):
         letters = list(self.selected_word)
-        letters[1,3] = "-"
+        letters[1] = "-"
+        letters[3] = "-"
         hidden = "".join(letters)
         return hidden
 
