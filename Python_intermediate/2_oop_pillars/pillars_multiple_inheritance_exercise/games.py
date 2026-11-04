@@ -3,7 +3,6 @@ import random
 class GameBase():
     len_word = 4
     user_tries = 3
-    game_over = 0
 
     def __init__(self, list_words):
         self.list_words = list_words
@@ -17,12 +16,14 @@ class GameBase():
         return selected_word
 
     def user_participation(self, user_participation_word):
-        return user_participation_word == self.selected_word
+        if user_participation_word != self.selected_word:
+            self.user_tries += -1
+        else:
+            return user_participation_word == self.selected_word
 
     def game_over_method(self):
         if self.user_tries == 0:
-            self.game_over = 1
-            return self.game_over
+            return self.user_tries == 0
 
 class BackwardsMixin():
 
