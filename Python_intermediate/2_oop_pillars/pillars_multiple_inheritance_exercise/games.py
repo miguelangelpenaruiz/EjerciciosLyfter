@@ -18,14 +18,15 @@ class GameBase():
     def user_participation(self, user_participation_word):
         if self.user_tries == 0:
             raise ValueError('No tries left')
-        self.user_tries += -1
-        return user_participation_word == self.selected_word
+        if user_participation_word != self.selected_word:
+            self.user_tries += -1
+            return False
+        else:
+            return user_participation_word == self.selected_word
 
     def game_over_method(self):
-        if self.user_tries == 0:
-            return self.user_tries == 0
-        else:
-            return False
+        return self.user_tries == 0
+
 
 class BackwardsMixin():
 
