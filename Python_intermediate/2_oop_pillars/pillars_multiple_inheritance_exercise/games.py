@@ -1,6 +1,7 @@
 import random
+from abc import ABC, abstractmethod
 
-class GameBase():
+class GameBase(ABC):
     len_word = 4
     user_tries = 3
 
@@ -26,28 +27,35 @@ class GameBase():
     def game_over_method(self):
         return self.user_tries == 0
 
+    @abstractmethod
+    def show_word():
+        pass
+
+
 
 class BackwardsMixin():
-
-    def backwards(self):
-        return self.selected_word[::-1]
+    def backwards(self,word):
+        return word[::-1]
 
 class HideLettersMixin():
-    def hide_letters(self):
-        letters = list(self.selected_word)
+    def hide_letter(self,word):
+        letters = list(word)
         letters[1] = "-"
         letters[3] = "-"
         hidden = "".join(letters)
         return hidden
 
 class GameModeEasy(BackwardsMixin, GameBase):
-    pass
+    def show_word(self):
+        return self.backwards(self.selected_word)
 
 class GameModeMedium(HideLettersMixin, GameBase):
     len_word = 5
-    pass
+    def show_word(self):
+        return self.hide_letter(self.selected_word)
 
 class GameModeHard(BackwardsMixin, HideLettersMixin, GameBase):
     len_word = 6
-    pass
+    def show_word(self):
+        return self.hide_letter(self.backwards(self.selected_word))
 
