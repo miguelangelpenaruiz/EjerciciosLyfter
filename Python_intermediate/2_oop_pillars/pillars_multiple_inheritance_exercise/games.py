@@ -22,8 +22,7 @@ class GameBase():
             self.user_tries += -1
             return False
         else:
-            return user_participation_word == self.selected_word
-
+            return True
     def game_over_method(self):
         return self.user_tries == 0
 
@@ -45,5 +44,10 @@ class GameModeEasy(BackwardsMixin, GameBase):
     pass
 
 class GameModeMedium(HideLettersMixin, GameBase):
+    len_word = 5
+    pass
+
+class GameModeHard(BackwardsMixin, HideLettersMixin, GameBase):
+    len_word = 6
     pass
 
