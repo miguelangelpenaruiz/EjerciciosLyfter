@@ -5,9 +5,12 @@ MEDIUM_WORDS = ["lapiz","reloj","canal","comer","jamon"]
 HARD_WORDS = ["correr","lanzar","pelota","tomate","cabeza"]
 
 def play(game):
-    while game.game_over_method() == False:
+    while not game.game_over_method():
         print(game.show_word())
-        print(f'You have {game.user_tries} tries left')
+        if game.user_tries == 1:
+            print(f'You have {game.user_tries} try left')
+        else:
+            print(f'You have {game.user_tries} tries left')
         answer = input('Guess the word: ').strip().lower()
         participation = game.user_participation(answer)
         if participation:
@@ -32,4 +35,4 @@ def menu():
             case "X":
                 break
             case _:
-                print('Invalid answer! Please make sure you to write a valid option (A-C or X for exit)')
+                print('Invalid answer! Please make sure to write a valid option (A-C or X for exit)')
