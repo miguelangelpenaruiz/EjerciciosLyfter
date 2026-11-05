@@ -2,11 +2,11 @@
 
 def print_parameters_d(func):
     def wrapper(*args, **kwargs):
-        for parameters in args:
-            print(parameters)
+        for parameter in args:
+            print(parameter)
         for key, value in kwargs.items():
             print(f'{key} = {value}')
-        result = func(*args,**kwargs)
+        result = func(*args, **kwargs)
         print(result)
         return result
     return wrapper
@@ -16,5 +16,6 @@ def print_parameters_d(func):
 def add(a, b):
     return a + b
 
-total = add(2, b=3)
-print(total * 10) 
+if __name__ == "__main__":
+    total = add(2, b=3)
+    print(total * 10) 
