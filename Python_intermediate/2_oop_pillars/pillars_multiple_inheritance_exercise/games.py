@@ -24,6 +24,7 @@ class GameBase(ABC):
             return False
         else:
             return True
+        
     def game_over_method(self):
         return self.user_tries == 0
 
@@ -32,10 +33,10 @@ class GameBase(ABC):
         pass
 
 
-
 class BackwardsMixin():
-    def backwards(self,word):
+    def backwards(self, word):
         return word[::-1]
+
 
 class HideLettersMixin():
     def hide_letter(self, word):
@@ -45,14 +46,17 @@ class HideLettersMixin():
         hidden = "".join(letters)
         return hidden
 
+
 class GameModeEasy(BackwardsMixin, GameBase):
     def show_word(self):
         return self.backwards(self.selected_word)
+
 
 class GameModeMedium(HideLettersMixin, GameBase):
     len_word = 5
     def show_word(self):
         return self.hide_letter(self.selected_word)
+
 
 class GameModeHard(BackwardsMixin, HideLettersMixin, GameBase):
     len_word = 6
