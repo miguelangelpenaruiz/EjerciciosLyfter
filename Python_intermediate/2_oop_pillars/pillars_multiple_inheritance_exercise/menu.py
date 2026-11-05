@@ -1,0 +1,39 @@
+import games
+
+EASY_WORDS = ["casa","pelo","mano","rojo"]
+MEDIUM_WORDS = ["lapiz","reloj","canal","comer","jamon"]
+HARD_WORDS = ["correr","lanzar","pelota","tomate","cabeza"]
+
+def play(game):
+    while not game.game_over_method():
+        print(game.show_word())
+        if game.user_tries == 1:
+            print(f'You have {game.user_tries} try left')
+        else:
+            print(f'You have {game.user_tries} tries left')
+        answer = input('Guess the word: ').strip().lower()
+        participation = game.user_participation(answer)
+        if participation:
+            print('Congratulations!! You Won')
+            return
+    print(f'You lost! The word was {game.selected_word}')
+
+def menu():
+    while True:
+        print("\nSelect difficulty")
+        print('A) Easy')
+        print('B) Medium')
+        print('C) Hard')
+        print('X) Exit')
+        option = input('write the letter of list: ').strip().upper()
+        match option:
+            case "A":
+                play(games.GameModeEasy(EASY_WORDS))
+            case "B":
+                play(games.GameModeMedium(MEDIUM_WORDS))
+            case "C":
+                play(games.GameModeHard(HARD_WORDS))
+            case "X":
+                break
+            case _:
+                print('Invalid answer! Please make sure to write a valid option (A-C or X for exit)')
