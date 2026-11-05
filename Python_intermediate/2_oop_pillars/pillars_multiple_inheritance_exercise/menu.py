@@ -15,7 +15,8 @@ def play(game):
         participation = game.user_participation(answer)
         if participation:
             print('Congratulations!! You Won')
-            break
+            return
+    print(f'You lost! The word was {game.selected_word}')
 
 def menu():
     while True:
@@ -29,9 +30,9 @@ def menu():
             case "A":
                 play(games.GameModeEasy(EASY_WORDS))
             case "B":
-                print('')
+                play(games.GameModeMedium(MEDIUM_WORDS))
             case "C":
-                print('')
+                play(games.GameModeHard(HARD_WORDS))
             case "X":
                 break
             case _:
