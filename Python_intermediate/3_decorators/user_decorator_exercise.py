@@ -1,7 +1,7 @@
 from datetime import date
 
-class User():
-    def __init__(self,date_of_birth):
+class User:
+    def __init__(self, date_of_birth):
         self.date_of_birth = date_of_birth
 
     @property
@@ -18,7 +18,7 @@ def validate_legal_age(func):
         for parameter in all_parameters:
             if isinstance(parameter, User) and parameter.age < 18:
                 raise ValueError('The user is not adult')
-        result = func(*args,**kwargs)
+        result = func(*args, **kwargs)
         return result
     return wrapper
 
