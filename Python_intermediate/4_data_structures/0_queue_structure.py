@@ -1,3 +1,5 @@
+# Course example
+
 class Node:
     data: str
     nextt: "Node"
