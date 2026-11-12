@@ -19,8 +19,12 @@ class Stack:
 
     def pop(self):
         current_node = self.top
+
         if current_node.under:
             self.top = current_node.under
+        elif current_node:
+            current_node.data = None
+        
 
     def print_stack(self):
         current_node = self.top
@@ -49,4 +53,15 @@ if __name__ == "__main__":
     print("-------------")
 
     my_queue.print_stack()
+
+    my_queue.pop()
+    my_queue.pop()
+    my_queue.pop()
+    my_queue.pop()
+    my_queue.pop()
+
+    print("-------------")
+
+    my_queue.print_stack()
+
 
