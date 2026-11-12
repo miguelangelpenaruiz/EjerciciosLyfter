@@ -1,10 +1,10 @@
 class Node:
     data: str
-    next: "Node"
+    nextt: "Node"
 
-    def __init__(self, data, next=None):
+    def __init__(self, data, nextt=None):
         self.data = data
-        self.next = next
+        self.nextt = nextt
 
 
 class Queue:
@@ -18,19 +18,19 @@ class Queue:
 
         while current_node is not None:
             print(current_node.data)
-            current_node = current_node.next
+            current_node = current_node.nextt
 
     def enqueue(self, new_node):
         current_node = self.head
 
-        while current_node.next is not None:
-            current_node = current_node.next
+        while current_node.nextt is not None:
+            current_node = current_node.nextt
 
-        current_node.next = new_node
+        current_node.nextt = new_node
 
     def dequeue(self):
         if self.head:
-            self.head = self.head.next
+            self.head = self.head.nextt
 
 
 first_node = Node("Hola")

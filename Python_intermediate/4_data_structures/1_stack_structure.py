@@ -1,25 +1,26 @@
 class Node:
-    top : Node
+    under: "Node"
+    
 
-    def __init__(self, data):
+    def __init__(self, data, under= None):
         self.data = data
-        self.under = None
+        self.under = under
 
 class Stack:
+    top: Node
+
     def __init__(self, top):
         self.top = top
 
-    def push(self, data):
+    def push(self, new_node):
         current_node = self.top
-        while current_node.under is not None:
-            current_node = current_node.under
-        self.top = data
+        self.top = new_node
+        new_node.under = current_node
 
     def pop(self):
         current_node = self.top
-        if self.top:
-            current_node.under = self.top
-            
+        if current_node.under:
+            self.top = current_node.under
 
     def print_stack(self):
         current_node = self.top
@@ -35,38 +36,17 @@ if __name__ == "__main__":
     second_node = Node("Mundo")
     my_queue.push(second_node)
 
+    third_node = Node("third")
+    my_queue.push(third_node)
+
+    forth = Node("forth")
+    my_queue.push(forth)
+
     my_queue.print_stack()
 
-    # third_node = Node("third")
-    # my_queue.enqueue(third_node)
+    my_queue.pop()
 
-    # forth = Node("forth")
-    # my_queue.enqueue(forth)
+    print("-------------")
 
-    # my_queue.print_structure()
+    my_queue.print_stack()
 
-    # print("DEQUEUE")
-
-    # my_queue.dequeue()
-    # my_queue.print_structure()
-
-    # print("DEQUEUE")
-
-    # my_queue.dequeue()
-    # my_queue.print_structure()
-
-    # print("DEQUEUE")
-
-    # my_queue.dequeue()
-    # my_queue.print_structure()
-
-    # print("DEQUEUE")
-
-    # my_queue.dequeue()
-    # my_queue.print_structure()
-
-
-    # print("DEQUEUE")
-
-    # my_queue.dequeue()
-    # my_queue.print_structure()
