@@ -2,15 +2,15 @@ class Node:
     under: "Node"
     
 
-    def __init__(self, data, under= None):
+    def __init__(self, data, under=None):
         self.data = data
         self.under = under
 
 class Stack:
     top: Node
 
-    def __init__(self, top):
-        self.top = top
+    def __init__(self):
+        self.top = None
 
     def push(self, new_node):
         current_node = self.top
@@ -18,12 +18,13 @@ class Stack:
         new_node.under = current_node
 
     def pop(self):
+        if self.top is None:
+            print("Stack empty, there is nothing to pop")
+            return
         current_node = self.top
+        self.top = current_node.under
+        return current_node.data
 
-        if current_node.under:
-            self.top = current_node.under
-        elif current_node:
-            current_node.data = None
         
 
     def print_stack(self):
@@ -33,35 +34,34 @@ class Stack:
             current_node = current_node.under
 
 if __name__ == "__main__":
+    my_stack = Stack()
     first_node = Node("Hola")
-    my_queue = Stack(first_node)
-    # my_queue.print_structure()
+    my_stack.push(first_node)
 
     second_node = Node("Mundo")
-    my_queue.push(second_node)
+    my_stack.push(second_node)
 
     third_node = Node("third")
-    my_queue.push(third_node)
+    my_stack.push(third_node)
 
     forth = Node("forth")
-    my_queue.push(forth)
+    my_stack.push(forth)
 
-    my_queue.print_stack()
+    my_stack.print_stack()
 
-    my_queue.pop()
-
-    print("-------------")
-
-    my_queue.print_stack()
-
-    my_queue.pop()
-    my_queue.pop()
-    my_queue.pop()
-    my_queue.pop()
-    my_queue.pop()
+    my_stack.pop()
 
     print("-------------")
 
-    my_queue.print_stack()
+    my_stack.print_stack()
+
+    my_stack.pop()
+    my_stack.pop()
+    my_stack.pop()
+    my_stack.pop()
+
+    print("-------------")
+
+    my_stack.print_stack()
 
 
